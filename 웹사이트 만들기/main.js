@@ -29,7 +29,7 @@ function templateHTML(title, list, body) {
 function makeFileList(fileList) {
     let list = '<ul>\n';
     fileList.forEach(filename => {
-        list += `<li><a href="/?id=${filename}">${filename}</a></li>`
+        list += `<li><a href="/?id=${filename}">${filename}</a></li>\n`
     })
     list += '</ul>';
     return list;
@@ -47,22 +47,21 @@ const app = http.createServer(function(request,response){
         let list;
         fs.readdir('./data', 'utf8', (err, fileList) => {
             list = makeFileList(fileList);
-        })
-
-        if(queryData.id === undefined)
-        {
-            title = 'Welcome';
-            data = 'Hello, Node.js';
-            const pageTemplate = templateHTML(title, list, basicBodyTmeplateHTML(title, data));
-            response.writeHead(200);
-            response.end(pageTemplate);
-        } else {
-            fs.readFile(`./data/${title}`, 'utf8', (err, data) => {
+            if(queryData.id === undefined)
+            {
+                title = 'Welcome';
+                data = 'Hello, Node.js';
                 const pageTemplate = templateHTML(title, list, basicBodyTmeplateHTML(title, data));
                 response.writeHead(200);
                 response.end(pageTemplate);
-            });
-        }
+            } else {
+                fs.readFile(`./data/${title}`, 'utf8', (err, data) => {
+                    const pageTemplate = templateHTML(title, list, basicBodyTmeplateHTML(title, data));
+                    response.writeHead(200);
+                    response.end(pageTemplate);
+                });
+            }
+        })
     } else {
         response.writeHead(404);
         response.end('Not found');

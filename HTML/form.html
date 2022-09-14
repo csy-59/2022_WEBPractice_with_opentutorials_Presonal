@@ -1,0 +1,16 @@
+<!--해당 내용의 정보를 action의 서버로 보내고 싶다는 뜻
+    name 속성에 대한 키 값을 갖고 보내게 된다.
+    But!! 서버에 내용을 수정할 수 있는 내용을 얻을 때는 url로 가져오면 안된다!
+    post 방식으로 보내면 url를 은닉하면서 가져올 수 있다.
+-->
+<form action="http://localhost:3000/process_create" method="post">
+    <p><input type="text" name = 'title'></p>
+    <p>
+        <textarea name="description">
+
+        </textarea>
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+</form>
