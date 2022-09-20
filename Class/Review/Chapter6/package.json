@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "name": "chapter6",
+  "version": "0.0.1",
+  "description": "익스프레스 프로젝트 복습",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "csy",
+  "license": "MIT"
+}
